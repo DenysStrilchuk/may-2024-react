@@ -1,20 +1,9 @@
-import React, {FC} from "react";
+import React from "react";
 import Product from "../product/Product";
+import {products} from "../../data";
+import {IProductModel} from "../../models/IProductModel";
 
-interface IProps {
-    id: number;
-    title: string;
-    description: string;
-    category: string;
-    price: string;
-    images: string[];
-
-}
-
-const Products: FC<IProps> = (props) => {
-    const products = fetch('https://dummyjson.com/products')
-        .then(res => res.json())
-        .then(console.log);
+const Products = () => {
     return (
         <ul>
             {products.map(({
@@ -23,16 +12,17 @@ const Products: FC<IProps> = (props) => {
                                description,
                                category,
                                price,
-                               images
-                           }: IProps) => <li>
-                <Product id={id}
-                         title={title}
-                         description={description}
-                         category={category}
-                         price={price}
-                         images={images}
-                />
-            </li>)}
+                               image
+                           }: IProductModel) =>
+                <li key={id}>
+                    <Product id={id}
+                             title={title}
+                             description={description}
+                             category={category}
+                             price={price}
+                             image={image}
+                    />
+                </li>)}
         </ul>
     );
 };
