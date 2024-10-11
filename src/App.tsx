@@ -2,18 +2,14 @@ import React, {useState} from 'react';
 import './App.css';
 import Users from "./components/users/Users";
 import {IPost} from "./models/IPost";
-import {IUser} from "./models/IUser";
 import {getPostsOfUser} from "./services/api.service";
 
 function App() {
 
     const [posts, setPosts] = useState<IPost[]>([]);
 
-    const lift = (user: IUser) => {
-        getPostsOfUser(user)
-            .then((response: IPost[]) => {
-                setPosts(response);
-            });
+    const lift = async (id: number) => {
+        setPosts(await getPostsOfUser(id));
     }
 
     return (

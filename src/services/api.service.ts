@@ -16,10 +16,8 @@ export const getUsers = async ():Promise<IUser[]> => {
     return axiosResponse.data.users;
 }
 
-export const getPostsOfUser = async (user: IUser): Promise<IPost[]> => {
-    let axiosResponse = await axiosInstance.get<IPostResponse>('/posts', {
-        params: { userId: user.id }
-    });
+export const getPostsOfUser = async (id: number): Promise<IPost[]> => {
+    let axiosResponse = await axiosInstance.get<IPostResponse>('/posts/user/' + id);
     return axiosResponse.data.posts;
 };
 

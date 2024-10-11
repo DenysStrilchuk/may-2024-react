@@ -4,7 +4,7 @@ import {IUser} from "../../models/IUser";
 import User from "../user/User";
 
 type IUsersProps = {
-    lift: (user: IUser) => void
+    lift: (id: number) => void
 }
 
 const Users:FC<IUsersProps> = ({lift}) => {

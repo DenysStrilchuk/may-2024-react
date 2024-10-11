@@ -3,7 +3,7 @@ import {IUser} from "../../models/IUser";
 
 type IUserProps = {
     user: IUser;
-    lift: (user: IUser) => void
+    lift: (id: number) => void
 }
 
 const User:FC<IUserProps> = ({user, lift}) => {
@@ -11,7 +11,7 @@ const User:FC<IUserProps> = ({user, lift}) => {
         <div>
             {user.username}
             <button onClick={() => {
-                lift(user);
+                lift(user.id);
             }}>choose
             </button>
         </div>
