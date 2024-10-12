@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {IUser} from "../../models/IUser";
 import {userService} from "../../services/dummyjson.api.service";
 import User from "../user/User";
 
-const Users = () => {
+type UsersProps = {
+    lift: (id: number) => void;
+}
+
+const Users:FC<UsersProps> = ({lift}) => {
     const [users, setUsers] = useState<IUser[]>([]);
 
     useEffect(() => {
@@ -19,7 +23,7 @@ const Users = () => {
     return (
         <div>
             {
-                users.map(user => <User key={user.id} user={user}/>)
+                users.map(user => <User key={user.id} user={user} lift={lift}/>)
             }
         </div>
     );
